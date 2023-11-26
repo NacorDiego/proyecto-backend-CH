@@ -3,8 +3,7 @@ openapi: 3.0.3
 info:
   version: 0.0.1
   title: 'Product REST API'
-  description:
-    Product REST API is a RESTful API based in the product taxonomy of Mercado Libre.
+  description: Product REST API is a RESTful API based in the product taxonomy of Mercado Libre.
   termsOfService: TERMS_OF_SERVICE
   license:
     name: MIT
@@ -14,18 +13,18 @@ info:
     email: diego.informaticaunlp@gmail.com
 
 tags:
-  name: Product
-  description: Everything about Products
+  - name: Product
+    description: Everything about Products
 
 servers:
-  url: http://{HOST}:{PORT}/{BASE_PATH}
-  variables:
-    HOST:
-      default: '127.0.0.1'
-    PORT:
-      default: '3000'
-    BASE_PATH:
-      default: api
+  - url: http://{HOST}:{PORT}/{BASE_PATH}
+    variables:
+      HOST:
+        default: '127.0.0.1'
+      PORT:
+        default: '3000'
+      BASE_PATH:
+        default: api
 
 paths:
   /product:
@@ -39,7 +38,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                type: array
                 items:
                   $ref: '#/components/schemas/Product'
         404:
@@ -48,16 +47,14 @@ paths:
             application/json:
               schema:
                 type: object
-                items:
-                  $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/Error'
         500:
           description: Unexpected error
           content:
             application/json:
               schema:
                 type: object
-                items:
-                  $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/Error'
     post:
       tags:
         - Product

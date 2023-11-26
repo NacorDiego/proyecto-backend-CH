@@ -1,3 +1,7 @@
 'use strict'
 
-console.log(1_000_000)
+import server from './server.js'
+
+const port = 8080
+
+server.listen(port, () => console.log(`Server is running at http://localhost:${port}`))
