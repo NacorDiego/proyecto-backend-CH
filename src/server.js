@@ -4,7 +4,7 @@ import express, {json} from 'express'
 import swaggerUi from 'swagger-ui-express'
 import cors from 'cors'
 import YAML from 'yamljs'
-import { router } from './routes/index.js' // Como se importan todas las rutas en index, solo debo importar el router de index.
+import { router } from './routes/index.routes.js' // Como se importan todas las rutas en index, solo debo importar el router de index.
 
 const server = express()
 const route = process.cwd() + '\\openapi.yml'
