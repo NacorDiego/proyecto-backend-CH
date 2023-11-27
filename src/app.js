@@ -1,7 +1,9 @@
 'use strict'
 
 import server from './server.js'
+import config from './configs/config.js'
+import { connectDB } from './configs/dbConnection.js'
 
-const port = 8080
 
-server.listen(port, () => console.log(`Server is running at http://localhost:${port}`))
+server.listen(config.PORT, () => console.log(`Server is running at http://localhost:${config.PORT}`))
+connectDB()

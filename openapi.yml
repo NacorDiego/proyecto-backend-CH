@@ -22,7 +22,7 @@ servers:
       HOST:
         default: '127.0.0.1'
       PORT:
-        default: '3000'
+        default: '8080'
       BASE_PATH:
         default: api
 
@@ -80,6 +80,29 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/ProductId'
+    get:
+      tags:
+        - Product
+      summary: Get a product by productId
+      responses:
+        200:
+          description: A product corresponding to the `productId`
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        404:
+          description: Return message when is not possible found product
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Product

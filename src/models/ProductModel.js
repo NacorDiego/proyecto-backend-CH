@@ -36,4 +36,4 @@ const productSchema = Schema({
     }
 })
 
-export const Product = model('Product', productSchema)
+export const productModel = model('Product', productSchema)
