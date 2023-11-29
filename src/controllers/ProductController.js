@@ -1,10 +1,10 @@
 'use strict'
 
-import { productModel } from '../models/ProductModel.js'
+import { Product } from '../models/ProductModel.js'
 
 export const getProducts = async (req, res) => {
     try {
-        const products = await productModel.find()
+        const products = await Product.find()
 
         if (!products) {
             return res.status(404).send({
@@ -30,7 +30,7 @@ export const getProductByID = async (req, res) => {
     try {
         const { pid } = req.params
 
-        const product = await productModel.findById({_id:pid})
+        const product = await Product.findById({_id:pid})
 
         if (!product) {
             return res.status(404).send({
@@ -56,7 +56,7 @@ export const saveProduct = async (req, res) => {
     try {
         const { name, photo, price, category, description } = req.body
 
-        const product = new productModel({
+        const product = new Product({
             name: name,
             photo: photo,
             price: price,
@@ -85,7 +85,7 @@ export const updateProduct = async (req, res) => {
 
         const productReplace = req.body
 
-        const productUpdated = await productModel.updateOne({ _id: pid }, productReplace)
+        const productUpdated = await Product.updateOne({ _id: pid }, productReplace)
 
         if (!productUpdated) {
             return res.status(404).send({
@@ -111,7 +111,7 @@ export const deleteProduct = async (req, res) => {
     try {
         const { pid } = req.params
 
-        const productDelete = await productModel.deleteOne({ _id: pid })
+        const productDelete = await Product.deleteOne({ _id: pid })
 
         !productDelete ?? res.status(404).send({ status:404, message: `No existe el producto con id = ${pid} en la base de datos.` })
 
